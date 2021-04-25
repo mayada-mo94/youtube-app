@@ -2,16 +2,43 @@
   <div class="banner">
     <div class="banner-content">
       <div class="banner-logo">
-        <img alt="Youtube logo" class="youtube-logo" src="../assets/youtube-icon.png" />
+        <img
+          alt="Youtube logo"
+          class="youtube-logo"
+          src="../assets/youtube-icon.png"
+        />
       </div>
       <div class="banner-search">
-        <input type="text" placeholder="Search.." name="search" />
-        <font-awesome-icon icon="search" />
+        <input
+          type="text"
+          placeholder="Search.."
+          for="search-video"
+          v-model.trim="nameOfVideo"
+          name="search"
+        />
+        <div @click="searchng()">
+          <font-awesome-icon icon="search" />
+        </div>
       </div>
     </div>
   </div>
 </template>
-
+<script>
+import { data } from "../shared";
+export default {
+  name: "search-videos",
+  data() {
+    return {
+    nameOfVideo: ""
+    }
+  },
+  methods: {
+    searchng() {
+      data.searchForVideo(this.nameOfVideo);
+    },
+  },
+};
+</script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 .banner {
@@ -20,14 +47,14 @@
     min-width: 100%;
     margin: 0 auto;
     display: flex;
-    .youtube-logo{
-    height: 30%;
-}
+    .youtube-logo {
+      height: 30%;
+    }
     .banner-search {
-    flex-grow: 1;
-    line-height: 1.4;
-    font-family: "Quicksand", sans-serif;
-  }
+      flex-grow: 1;
+      line-height: 1.4;
+      font-family: "Quicksand", sans-serif;
+    }
   }
 }
 </style>

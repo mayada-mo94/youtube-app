@@ -4,7 +4,6 @@
       <tr>
         <td v-for="video in videos" :key="video.snippet.title">
         <img class="img-url" v-bind:src="video.snippet.thumbnails.medium.url" />
-
          <span> {{ video.snippet.title }}</span>
          <p> {{ video.snippet.description }}</p>
         </td>

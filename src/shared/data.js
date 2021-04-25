@@ -18,6 +18,10 @@ const getVideos = async function () {
     }
 };
 
+const searchForVideo = async function(data){
+    console.log('hello' +data);
+}
 export const data = {
     getVideos,
+    searchForVideo
 };
