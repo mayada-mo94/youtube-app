@@ -15,6 +15,7 @@
           for="search-video"
           v-model.trim="nameOfVideo"
           name="search"
+          @keypress.enter="searchng()"
         />
         <div @click="searchng()">
           <font-awesome-icon icon="search" />
@@ -29,12 +30,18 @@ export default {
   name: "search-videos",
   data() {
     return {
-    nameOfVideo: ""
-    }
+      nameOfVideo: "",
+      videosFiltered: [],
+    };
   },
   methods: {
-    searchng() {
-      data.searchForVideo(this.nameOfVideo);
+    async searchng() {
+      this.videosFiltered = [];
+      this.videosFiltered = await data.searchForVideo(this.nameOfVideo);
+
+      console.log(this.videosFiltered)
+     this.$root.$emit("receive-filter-video",this.videosFiltered);
+     this.nameOfVideo="";
     },
   },
 };

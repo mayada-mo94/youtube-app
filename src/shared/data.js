@@ -9,8 +9,6 @@ const getVideos = async function () {
     // Let's parse it better
     try {
         const response = await axios.get("https://www.googleapis.com/youtube/v3/search?part=snippet&order=rating&type=video&videoDefinition=high&videoEmbeddable=true&key=AIzaSyAHGAQ2HWZf80MmcfNTsraJ_9HSt_-8ob0")
-
-        console.log(response.data.items)
         return response.data.items;
     } catch (error) {
         console.error(error);
@@ -19,7 +17,12 @@ const getVideos = async function () {
 };
 
 const searchForVideo = async function(data){
-    console.log('hello' +data);
+
+
+    const response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${data}&order=rating&type=video&videoDefinition=high&videoEmbeddable=true&key=AIzaSyAHGAQ2HWZf80MmcfNTsraJ_9HSt_-8ob0`)
+
+    console.log(response.data.items)
+    return response.data.items;
 }
 export const data = {
     getVideos,

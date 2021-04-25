@@ -3,7 +3,7 @@
     <banner-component/>
     <div class="main-section columns">
       <main class="column">
-        <list-videos/>
+        <list-videos />
       </main>
     </div>
   </div>

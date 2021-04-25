@@ -22,6 +22,10 @@ export default {
     };
   },
   async created() {
+      this.$root.$on('receive-filter-video',(received)=>{
+          this.videos= received;
+console.log(received);
+      }),
     await this.loadVideos();
   },
   methods: {
