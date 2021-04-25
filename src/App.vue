@@ -1,16 +1,23 @@
 <template>
   <div id="app">
     <banner-component/>
+    <div class="main-section columns">
+      <main class="column">
+        <list-videos/>
+      </main>
+    </div>
   </div>
 </template>
 
 <script>
-import BannerComponent from './components/Banner.vue'
+import BannerComponent from './components/Banner';
+import ListVideos from './components/ListVideos.vue';
 
 export default {
   name: 'App',
   components: {
-    BannerComponent
+    BannerComponent,
+    ListVideos
   }
 }
 </script>
@@ -22,6 +29,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
