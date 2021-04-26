@@ -2,10 +2,12 @@
   <div class="container" v-if="videos">
     <table class="table">
       <tr>
-        <td v-for="video in videos" :key="video.snippet.title">
-        <img class="img-url" v-bind:src="video.snippet.thumbnails.medium.url" />
-         <span> {{ video.snippet.title }}</span>
-         <p> {{ video.snippet.description }}</p>
+        <td v-for="video in videos" :key="video.videoTitle">
+        <img class="img-url" v-bind:src="video.videoImgUrl" />
+         <span> {{ video.videoTitle }}</span>
+         <p> {{ video.videoDescription }}</p>
+         <p> channelTitle: {{ video.videoChannelName }}</p>
+         <p> views: {{ video.videoViewCount }}</p>
         </td>
       </tr>
     </table>
@@ -24,7 +26,6 @@ export default {
   async created() {
       this.$root.$on('receive-filter-video',(received)=>{
           this.videos= received;
-console.log(received);
       }),
     await this.loadVideos();
   },
