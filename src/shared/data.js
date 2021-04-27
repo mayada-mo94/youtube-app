@@ -4,7 +4,7 @@ import * as  axios from 'axios';
 const getVideos = async function () {
     try {
         let dataResult = [];
-        const response = await axios.get("https://www.googleapis.com/youtube/v3/search?part=snippet&order=rating&type=video&videoDefinition=high&videoEmbeddable=true&key=AIzaSyAHGAQ2HWZf80MmcfNTsraJ_9HSt_-8ob0&maxResults=1")
+        const response = await axios.get("https://www.googleapis.com/youtube/v3/search?part=snippet&order=rating&type=video&videoDefinition=high&videoEmbeddable=true&key=AIzaSyAHGAQ2HWZf80MmcfNTsraJ_9HSt_-8ob0&maxResults=5")
         response.data.items.forEach(async function (value) {
             let videId = value.id.videoId;
             var viewsCount = await axios.get(`https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${videId}&key=AIzaSyAHGAQ2HWZf80MmcfNTsraJ_9HSt_-8ob0`)

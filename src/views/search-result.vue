@@ -1,5 +1,5 @@
 <template>
-  <div class="container" v-if="videos">
+  <div class="container" v-if="videos"> 
     <table class="table">
       <tr>
         <td v-for="video in videos" :key="video.videoTitle">
@@ -21,8 +21,8 @@
         </td>
       </tr>
     </table>
-    <!-- <scroll-loader :loader-method="loadVideos" :loader-disable="disable">
-</scroll-loader> -->
+    <scroll-loader :loader-method="loadVideos" :loader-disable="disable">
+    </scroll-loader>
   </div>
 </template>
 <script>
@@ -33,9 +33,8 @@ export default {
   data() {
     return {
       filterText: "",
-      disable: false,
+      disable: true,
       videos: [],
-      // maxResults: 5,
     };
   },
   async created() {
@@ -54,8 +53,8 @@ export default {
   methods: {
     async loadVideos() {
       this.videos = [];
-      //this.maxResults
-      this.videos =  await data.getVideos();
+      this.videos = await data.getVideos();
+      this.disable= true;
     },
     async searchWithQuery() {
       this.videos = [];
@@ -63,22 +62,21 @@ export default {
         this.videos = await data.searchForVideo(this.filterText);
       }
     },
+     async getResultSet() {
+      window.onscroll = async () => {
+        let bottomOfWindow = this.videos.length >= 5;
+        // let bottomOfWindow = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) + window.innerHeight === document.documentElement.offsetHeight
+        // let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
+        if (bottomOfWindow) {
+          this.disable= false;
+          this.videos = await this.loadVideos();
+        }
+      };
+    },
   },
-  // async mounted() {
-  //    async getResultSet() {
-  //     window.onscroll = async () => {
-  //       let bottomOfWindow = this.videos.length >= 5;
-  //       // let bottomOfWindow = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) + window.innerHeight === document.documentElement.offsetHeight
-  //       // let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
-  //       if (bottomOfWindow) {
-  //         this.maxResults += 5;
-  //         console.log(this.maxResults);
-  //         //this.videos = await this.loadVideos();
-  //       }
-  //     };
-  //   },
-  //   await this.getResultSet();
-  // },
+  async mounted() {
+    await this.getResultSet();
+  },
 };
 </script>
 <style lang="scss">
