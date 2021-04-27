@@ -3,21 +3,19 @@
     <banner-component/>
     <div class="main-section columns">
       <main class="column">
-        <list-videos />
+         <router-view />
       </main>
     </div>
   </div>
 </template>
 
 <script>
-import BannerComponent from './components/Banner';
-import ListVideos from './components/ListVideos.vue';
+import BannerComponent from './components/banner-header';
 
 export default {
   name: 'App',
   components: {
     BannerComponent,
-    ListVideos
   }
 }
 </script>

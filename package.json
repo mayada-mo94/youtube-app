@@ -13,7 +13,12 @@
     "@fortawesome/vue-fontawesome": "^2.0.2",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "numeral": "^2.0.6",
+    "rxjs": "^6.6.7",
+    "vue": "^2.6.12",
+    "vue-router": "^3.5.1",
+    "vue-rx": "^6.2.0",
+    "vue-scroll-loader": "^2.2.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

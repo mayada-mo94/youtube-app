@@ -1,0 +1,209 @@
+.banner {
+    .banner-content {
+      padding: 16px;
+      min-width: 100%;
+      margin: -8px -8px auto;
+      display: flex;
+      height: 5vh;
+      border-bottom: 1px solid lightgrey;
+      box-shadow: 0 1px 20px lightgrey;
+      position:fixed;
+      background-color: white;
+      .youtube-logo {
+        height: 100%;
+      }
+      .banner-logo{
+        width: 35vw;
+        @media (max-width: 768px){
+        width: 20vw;
+        }
+      }
+      .banner-search {
+        flex-grow: 1;
+        line-height: 1.4;
+        font-family: "Quicksand", sans-serif;
+        input[type=text]{
+            padding: 10px;
+            font-size: 17px;
+            border: 1px solid lightgrey;
+            float: left;
+            width: 50%;
+            display: inline-block;
+        }
+        input:focus
+        {
+            border: 1px solid lightgrey;
+            box-shadow: 0 0 3px lightgrey;
+            outline-offset: 0px;
+            outline: none;
+        }
+        button{
+            float: left;
+            width: 6%;
+            padding: 10px;
+            /* background: #2196F3; */
+            color: gray;
+            font-size: 17px;
+            border: 1px solid lightgrey;
+            border-left: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+        button:focus
+        {
+            border: 1px solid lightgrey;
+            box-shadow: 0 0 3px lightgrey;
+            outline-offset: 0px;
+            outline: none;
+        }
+        }
+      }
+    }
+    table.table {
+        width: 100%;
+        padding-top: 15vh;
+        margin-left: 14%;
+        @media (max-width: 768px){
+          padding-top: 8vh;
+        margin-left: 0;
+          }
+      }
+      
+      .table td {
+        text-align: left;
+        padding: 0.25em;
+        display: flex;
+        height: 25vh;
+        @media (max-width: 768px){
+        height: 19vh;
+          
+          }
+      }
+      
+      .table tr {
+        border-bottom: 1px solid #ddd;
+      }
+      
+      
+      @media screen and (max-width: 800px) {
+        tr {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          margin: 0.5em 0;
+          border: 1px solid rgba(3, 3, 3, 0.2);
+        }
+        td,
+        th {
+          flex: 1 1 150px;
+          border: 0.5px solid rgba(3, 3, 3, 0.2);
+        }
+      }
+      .video-img{
+          width:20vw;
+          display: inline-block;
+          margin-right: 5vw;
+          @media (max-width: 768px){
+            width:52vw;
+
+            }
+          img{
+              width: 100%;
+              @media (max-width: 768px){
+                height:100%;
+    
+                }
+          }
+      }
+      .video-description{
+        display: inline-block;
+        width: 35vw;
+          @media (max-width: 768px){
+            font-size: 8px !important;
+            }
+        span{
+            font-size: 20px;
+            font-weight: bold;
+            @media (max-width: 768px){
+              font-size: 8px;
+              }
+        }
+        p{
+          margin: 0px;
+        }
+      }
+      .link{
+        border: none;
+        background: white;
+        text-decoration-line: underline;
+      }
+        /* For desktop */
+@media (min-width: 576px) {
+ .mobile-banner-search{
+   display: none;
+ }
+ }
+ 
+ /* For mobile */
+ @media (max-width: 768px) {
+.banner-search{
+  display: none;
+}
+}
+.mobile-banner-search{
+  display: flex;
+}
+.mobile-label{
+  position: relative;
+  display: inline-block;
+  background-color: #fff;
+  // padding: 5px 12px;
+  transition: all 1s ease;
+  border-radius: 0;
+  // box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+  &::after{
+    content: '';
+    display: block;
+    height: 2px;
+    width: 80%;
+    background-color: #F0AD4E;
+    transition: all 1s ease 0.5s;
+  }
+  input{
+    transition: width 1s ease, opacity 0.5s ease 0.5s;
+    opacity: 1;
+    width: 180px;
+    height: 25px;
+    border: 0;
+    outline: none;
+    color: darken(#F0AD4E, 25)
+  }
+  i{
+    position: absolute;
+    top: 11px;
+    right: 11px;
+    color: #333;
+    cursor: pointer;
+  }
+  &[data-state="close"]{
+     transition: all 1s ease;
+    &::after{
+      width: 0%;
+      transition: all 0.3s ease;
+    }
+    i{
+      pointer-events: none;
+    }
+    input{
+      width: 0px;
+      height: 25px;
+      opacity:0;
+      cursor: pointer;
+      transition: opacity 0.5s ease, width 1s ease;
+      -webkit-appearance:none
+    } 
+    .search-mobile{
+      display: none;
+    }
+  }
+}
