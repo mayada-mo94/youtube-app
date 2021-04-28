@@ -7,9 +7,10 @@ import router from './router';
 import ScrollLoader from 'vue-scroll-loader'
 
 library.add(faSearch,faArrowRight)
+
 Vue.use(ScrollLoader)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 new Vue({
   router,

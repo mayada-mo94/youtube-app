@@ -1,5 +1,5 @@
 <template>
-  <div class="container" v-if="videos"> 
+  <div class="container" v-if="videos" id="container-videos"> 
     <table class="table">
       <tr>
         <td v-for="video in videos" :key="video.videoTitle">
@@ -26,7 +26,7 @@
   </div>
 </template>
 <script>
-import { data } from "../shared";
+import { videos_service } from "../shared";
 
 export default {
   name: "search",
@@ -38,45 +38,50 @@ export default {
     };
   },
   async created() {
-    let parameters = this.$route.query;
-    this.filterText = parameters.query;
+    this.videos=[];
+    this.filterText = this.$route.query.query;
+
     if (this.filterText) {
+      this.videos = [];
       await this.searchWithQuery();
     } else {
       await this.loadVideos();
     }
-
     this.$root.$on("receive-filter-video", (received) => {
+      this.videos = [];
       this.videos = received;
     });
   },
   methods: {
     async loadVideos() {
-      this.videos = [];
-      this.videos = await data.getVideos();
-      this.disable= true;
+     await videos_service.getVideos().then((newVidoes)=>{
+       this.videos.push(...newVidoes);
+       })
+       this.disable = true;
     },
     async searchWithQuery() {
-      this.videos = [];
       if (this.filterText) {
-        this.videos = await data.searchForVideo(this.filterText);
+       await videos_service.searchForVideo(this.filterText).then((newVidoes)=>{
+        this.videos.push(...newVidoes);
+       })
+       this.disable = true;
       }
     },
-     async getResultSet() {
-      window.onscroll = async () => {
-        let bottomOfWindow = this.videos.length >= 5;
-        // let bottomOfWindow = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) + window.innerHeight === document.documentElement.offsetHeight
-        // let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
-        if (bottomOfWindow) {
-          this.disable= false;
-          this.videos = await this.loadVideos();
-        }
-      };
-    },
+   async handleScroll(){
+     window.onscroll = async () => {
+       let element = document.getElementById('container-videos');
+       let bottomOfWindow = element.getBoundingClientRect().bottom < window.innerHeight;
+       if(bottomOfWindow)
+       {
+          this.disable = false;
+          await this.loadVideos();
+       }
+     }
+  }
   },
   async mounted() {
-    await this.getResultSet();
-  },
+    this.handleScroll();
+  }
 };
 </script>
 <style lang="scss">

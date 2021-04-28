@@ -48,7 +48,7 @@
   </div>
 </template>
 <script>
-import { data } from "../shared";
+import { videos_service } from "../shared";
 export default {
   name: "search-videos",
   data() {
@@ -61,9 +61,8 @@ export default {
   methods: {
     async searchng() {
       this.videosFiltered = [];
-      this.videosFiltered = await data.searchForVideo(this.nameOfVideo);
+      this.videosFiltered = await videos_service.searchForVideo(this.nameOfVideo);
 
-      console.log(this.videosFiltered);
       this.$root.$emit("receive-filter-video", this.videosFiltered);
       this.nameOfVideo = "";
     },
