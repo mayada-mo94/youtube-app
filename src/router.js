@@ -1,10 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import PageNotFound from '@/views/page-not-found';
+import PageNotFound from '@/views/PageNotFound';
 
 Vue.use(Router);
-
-//  const parseProps = r => ({ query: parseInt(r.params.query) });
 
 export default new Router({
     mode: 'history',
@@ -18,18 +16,15 @@ export default new Router({
         {
             path: '/search',
             name: 'search',
-            // props: parseProps,
-            // props: true,
             component: () =>
-                import('./views/search-result.vue'),
+                import('./views/Videos.vue'),
         },
         {
             path: '/channel/:id',
             name: 'channel-page',
              props: true,
-           // props: parseProps,
             component: () =>
-                import('./views/channel.vue'),
+                import('./views/Channel.vue'),
         },
         {
             path: '*',

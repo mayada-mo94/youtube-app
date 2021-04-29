@@ -1,0 +1,52 @@
+.channel-container {
+    width: 77vw;
+    margin-left: 10vw;
+    border-right: 1px solid lightgrey;
+    .channel-table {
+        width: 100%;
+        padding: 30px;
+        background: white;
+        @media (max-width: 768px) {
+            padding-top: 8vh;
+            margin-left: 0;
+        }
+    }
+
+    .channel-header {
+        padding: 30px 0px;
+        background: #f9f9f9;
+        .channel-url {
+            margin-top: 5vh;
+            width: 100%;
+            height: calc((150vw - 240px) / 6.2 - 1px);
+        }
+        .channel-info {
+            display: flex;
+        }
+        .channel-info > div {
+            text-align: left;
+            margin-left: 5vw;
+        }
+        .channel-title {
+            font-size: 2rem;
+            font-weight: 400;
+            margin: 5px 5px 0px 0px;
+        }
+    }
+
+    .subscribe-icon {
+        height: 45px;
+        margin-bottom: -15px;
+    }
+    .video-data {
+        margin: 1vh 2vw;
+        span {
+            font-weight: bold;
+            font-size: 20px;
+        }
+        p {
+            color: gray;
+            font-size: 14px;
+        }
+    }
+}

@@ -1,0 +1,135 @@
+.banner {
+    .banner-content {
+        padding: 16px;
+        min-width: 100%;
+        margin: -8px -8px auto;
+        display: flex;
+        height: 5vh;
+        border-bottom: 1px solid lightgrey;
+        box-shadow: 0 1px 20px lightgrey;
+        position: fixed;
+        background-color: white;
+        /* For desktop */
+        @media (min-width: 576px) {
+            .mobile-banner-search {
+                display: none;
+            }
+        }
+
+        /* For mobile */
+        @media (max-width: 768px) {
+            .banner-search {
+                display: none;
+            }
+            .mobile-banner-search {
+                display: flex;
+                
+                #app{
+                    width: 70vw;
+                    margin-top: 10px;
+                    background-color: #fff;
+                    .mobile-label {
+                        float: right;
+                        position: relative;
+                        display: inline-block;
+                        background-color: #fff;
+                        transition: all 1s ease;
+                        border-radius: 0;
+                        &::after {
+                            content: "";
+                            display: block;
+                            height: 2px;
+                            width: 80%;
+                            background-color: black;
+                            transition: all 1s ease 0.5s;
+                        }
+                        input {
+                            transition: width 1s ease, opacity 0.5s ease 0.5s;
+                            opacity: 1;
+                            width: 180px;
+                            height: 25px;
+                            border: 0;
+                            outline: none;
+                            color: darken(black, 25);
+                        }
+                        i {
+                            position: absolute;
+                            top: 11px;
+                            right: 11px;
+                            color: #333;
+                            cursor: pointer;
+                        }
+                        &[data-state="close"] {
+                            transition: all 1s ease;
+                            &::after {
+                                width: 0%;
+                                transition: all 0.3s ease;
+                            }
+                            i {
+                                pointer-events: none;
+                            }
+                            input {
+                                width: 0px;
+                                height: 25px;
+                                opacity: 0;
+                                cursor: pointer;
+                                transition: opacity 0.5s ease, width 1s ease;
+                                -webkit-appearance: none;
+                            }
+                            .search-mobile {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+      
+        .banner-logo {
+            width: 35vw;
+            @media (max-width: 768px) {
+                width: 20vw;
+            }
+            .youtube-logo {
+                height: 100%;
+            }
+        }
+        .banner-search {
+            flex-grow: 1;
+            line-height: 1.4;
+            font-family: "Quicksand", sans-serif;
+            input[type="text"] {
+                padding: 10px;
+                font-size: 17px;
+                border: 1px solid lightgrey;
+                float: left;
+                width: 50%;
+                display: inline-block;
+            }
+            input:focus {
+                border: 1px solid lightgrey;
+                box-shadow: 0 0 3px lightgrey;
+                outline-offset: 0px;
+                outline: none;
+            }
+            button {
+                float: left;
+                width: 6%;
+                padding: 10px;
+                /* background: #2196F3; */
+                color: gray;
+                font-size: 17px;
+                border: 1px solid lightgrey;
+                border-left: none;
+                cursor: pointer;
+                display: inline-block;
+            }
+            button:focus {
+                border: 1px solid lightgrey;
+                box-shadow: 0 0 3px lightgrey;
+                outline-offset: 0px;
+                outline: none;
+            }
+        }
+    }
+}

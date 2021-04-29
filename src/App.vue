@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import BannerComponent from './components/banner-header';
+import BannerComponent from './components/BannerHeader';
 
 export default {
   name: 'App',
@@ -20,15 +20,6 @@ export default {
 }
 </script>
 
-<style>
-body{
-      overflow-x: hidden;
-}
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<style lang="scss">
+@import "./design/App.scss";
 </style>
