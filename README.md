@@ -10,8 +10,10 @@ https://drive.google.com/file/d/1SnstHsW7HUEsAUv8pioJoj_mc9IBvptu/view?usp=shari
 ## Steps of Configuring 
 clone: https://github.com/mayada-mo94/youtube-app.git
 
+cd youtube-app
+------------------------------------
 make sure you in [master] branch.
-
+-----------------------------------
 ## Run App
 ```
 - npm install
