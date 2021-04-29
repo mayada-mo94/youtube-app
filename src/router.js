@@ -24,7 +24,7 @@ export default new Router({
             name: 'channel-page',
              props: true,
             component: () =>
-                import('./views/Channel.vue'),
+                import('./views/channel.vue'),
         },
         {
             path: '*',
